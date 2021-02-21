@@ -10,9 +10,42 @@ for i in range(len(lst_1)): #lst_1 contains all the pizza's information
         if len(lst_1[i]) == int(lst_1[i][0]): lst_1.remove(lst_1[i])
         else: pass
      except: print("Some input is wrong, Enter number of ingredients or number of ingredients not actually matching the declared number")
-print(lst_1)
-print(sorted(lst_1[1])==sorted(lst_1[3]))
-
-
-
-
+from collections import Counter
+counts = dict(Counter(str(elem) for elem in lst_1))
+lst_2=[]
+print(counts)
+for k, v in counts.items():
+    if v>1: lst_2.append(eval(k))
+for i in lst_1:
+    for j in lst_2:
+        if i == j:
+            x = lst_1.index(i)
+            lst_1[x].clear()
+lst_two = []
+lst_three = []
+lst_four = []
+for i in range(len(lst_1)):
+    if len(lst_1[i:])>=2 & (lst_1[i] & lst_1[i+1] != []) & (sorted(lst_1[i]) != sorted(lst_1[i+1])):
+        while(len(lst_two)< 2*team_two):
+            lst_two.append(lst_1[i])
+            lst_two.append(lst_1[i+1])
+            break
+        break
+    if len(lst_1[i:])>=3 & (lst_1[i] & lst_1[i+1] & lst_1[i+2] != []) & (sorted(lst_1[i]) != sorted(lst_1[i+1]) != sorted(lst_1[i+2])):
+        while(len(lst_three)< 3*team_three):
+            lst_three.append(lst_1[i])
+            lst_three.append(lst_1[i+1])
+            lst_three.append(lst_1[i+2])
+            break
+        break
+    if len(lst_1[i:]) >= 4 & (lst_1[i] & lst_1[i+1] & lst_1[i+2] & lst_1[i+3] != []) & (sorted(lst_1[i]) != sorted(lst_1[i+1]) != sorted(lst_1[i+2]) != sorted(lst_1[i+3])):
+        while(len(lst_four)< 4*team_four):
+            lst_four.append(lst_1[i])
+            lst_four.append(lst_1[i+1])
+            lst_four.append(lst_1[i+2])
+            lst_four.append(lst_1[i+3])
+            break
+        break
+    continue
+print(lst_two)
+print(lst_three)
