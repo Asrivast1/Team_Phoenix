@@ -1,11 +1,12 @@
 from collections import Counter
 lst_1 = [] # For storing the information about pizza
-try:
-    no_pizza, team_two, team_three, team_four = map(int, input().split()) # Taking multiple inputs in a single line
-except:
-    print("Please enter 4 numerical inputs only") #Try and catch for faulty input
-for i in range(no_pizza) :
-    lst_1.append([x for x in input().split()]) #Appending lists of no. of ingredients and names of ingredients
+fname = input("Enter the file name: ")
+fhand = open(fname)
+lst=[]
+for line in fhand:
+    lines = line.split()
+    lst_1.append(lines)
+lst_1.pop(0)
 for i in range(len(lst_1)): #lst_1 contains all the pizza's information
      try: # Try catch and if else loop deleting inconsistent lists
         if len(lst_1[i]) == int(lst_1[i][0]): lst_1.remove(lst_1[i])
@@ -82,8 +83,8 @@ for i in range(0, len(lst_four), 4):
             list_x.append(lst_four[i+3][0])
             break
     except:pass
-print(len(list_x))
-for i in range(0, len(lst_two), 2): # Printing number of pizzas delivered to each team
+print(len(list_x)) # Number of pizzas delivered
+for i in range(0, len(lst_two), 2): # Printing pizzas delivered to each team
     try:
         while sorted(list_a[i]) != sorted(list_a[i+1]):
             print(2, lst_two[i][0], lst_two[i+1][0])
