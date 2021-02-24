@@ -41,24 +41,41 @@ for a in range(0, len(lst_1), 3) :
             break
     except:pass
 print(lst_two)
-print(lst_three)
 print(lst_four)
 a = len(lst_two)%2
 b = len(lst_three)%3
 c = len(lst_four)%4
 if a or b or c !=0:
-    lst_two.pop()
-    for i in range(b): lst_three.pop()
-    for i in range(c): lst_four.pop()
+    lst_two.pop(0)
+    for i in range(b): lst_three.pop(0)
+    for i in range(c): lst_four.pop(0)
 else:pass
-print(lst_two)
-print(lst_three)
-print(lst_four)
 delivery = len(lst_two)+len(lst_three)+len(lst_four)
 print(delivery)
-for i in range(0, len(lst_two), 2):
-    print(2, lst_two[i][0], lst_two[i+1][0])
+list_a=[]
+list_b=[]
+list_c=[]
+for i in range(0, len(lst_two)) : list_a.append([str(j) for j in lst_two[i]])
+for k in range(0, len(lst_three)) : list_b.append([str(l) for l in lst_three[k]])
+for m in range(0, len(lst_four)) : list_c.append([str(n) for n in lst_four[m]])
+print(list_a)
+print(list_c)
+print(list_b)
+for i in range(0, len(lst_two)-1, 2):
+    try:
+        while sorted(list_a[i]) != sorted(list_a[i+1]):
+            print(2, lst_two[i][0], lst_two[i+1][0])
+            break
+    except:break
 for i in range(0, len(lst_three), 3):
-    print(3, lst_three[i][0], lst_three[i+1][0], lst_three[i+2][0])
+    try:
+        while sorted(list_b[i])!= sorted(list_b[i+1]) and sorted(list_b[i])!= sorted(list_b[i+3]):
+            print(3, lst_three[i][0], lst_three[i+1][0], lst_three[i+2][0])
+            break
+    except:break
 for i in range(0, len(lst_four), 4):
-    print(4, lst_four[i][0], lst_four[i+1][0], lst_four[i+2][0], lst_four[i+3][0])
+    try:
+        while sorted(list_c[i])!=sorted(list_c[i+1]) and sorted(list_c[i+2])!=sorted(list_c[i+3]) and sorted(list_c[i]) != sorted(list_c[i+3]):
+            print(4, lst_four[i][0], lst_four[i+1][0], lst_four[i+2][0], lst_four[i+3][0])
+            break
+    except:break
